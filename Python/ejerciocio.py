@@ -1,14 +1,11 @@
-#Declaramos las funciones para el perimetro y el area de un rectangulo
-def perimetro_rectangulo(base, altura):
-    return 2 * (base + altura)
+numero = int(input("Introduce el numero hasta el cual quieres verificar si es primo: "))
+es_primo = ""
 
-def area_rectangulo(base, altura):
-    return base * altura
-
-#Ahora pedimos al usuario que introduzca los valores de la base y la altura del rectangulo
-base = float(input("Introduce la base del rectangulo: "))
-altura = float(input("Introduce la altura del rectangulo: "))
-
-#Calculamos el perimetro y el area del rectangulo
-print("El perimetro del rectangulo es", perimetro_rectangulo(base, altura))
-print("El area del rectangulo es", area_rectangulo(base, altura))
+for i in range(1, numero+1):
+    for j in range(1, i):
+        if i % 1 == 0 and i % i == 0 and i % j != 0:
+            es_primo += str(i)+" es primo \n"
+        else:
+            es_primo += str(i)+" no es primo \n"
+                
+print(es_primo)
