@@ -1,0 +1,2 @@
+/home/inmemorialake/Documentos/Proyectos Programación/build/CMakeFiles/edit_cache.dir
+/home/inmemorialake/Documentos/Proyectos Programación/build/CMakeFiles/rebuild_cache.dir
