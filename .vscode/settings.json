@@ -2,5 +2,6 @@
     "files.associations": {
         "ostream": "cpp"
     },
-    "cmake.sourceDirectory": "/home/inmemorialake/Documentos/Proyectos Programación"
+    "cmake.sourceDirectory": "/home/inmemorialake/Documentos/Proyectos Programación",
+    "cmake.ignoreCMakeListsMissing": true
 }
