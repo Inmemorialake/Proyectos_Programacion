@@ -6,5 +6,6 @@ set(CMAKE_CXX_STANDARD 17)  # Establece el estándar de C++
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 include_directories(include)  # Añade el directorio de encabezados
+file(GLOB SOURCES "src/*.cpp")  # Añade todos los archivos fuente
 
-add_executable( )  # Añade el ejecutable y los archivos fuente
+add_executable(  ${SOURCES)  # Añade el ejecutable y los archivos fuente
