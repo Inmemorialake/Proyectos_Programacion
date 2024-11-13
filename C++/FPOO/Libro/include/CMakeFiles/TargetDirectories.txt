@@ -1,0 +1,3 @@
+/home/inmemorialake/Documentos/Proyectos Programación/C++/FPOO/Libro/include/CMakeFiles/Libro.dir
+/home/inmemorialake/Documentos/Proyectos Programación/C++/FPOO/Libro/include/CMakeFiles/edit_cache.dir
+/home/inmemorialake/Documentos/Proyectos Programación/C++/FPOO/Libro/include/CMakeFiles/rebuild_cache.dir

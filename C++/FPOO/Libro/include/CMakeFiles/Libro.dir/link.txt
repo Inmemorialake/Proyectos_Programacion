@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file,CMakeFiles/Libro.dir/link.d CMakeFiles/Libro.dir/src/AplicacionUso.cpp.o CMakeFiles/Libro.dir/src/Libro.cpp.o CMakeFiles/Libro.dir/src/Persona.cpp.o CMakeFiles/Libro.dir/src/main.cpp.o -o Libro
