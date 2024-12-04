@@ -1,3 +1,0 @@
-/home/gegorio/Downloads/PROYECTO FINAL FPOO/build/CMakeFiles/Tienda.dir
-/home/gegorio/Downloads/PROYECTO FINAL FPOO/build/CMakeFiles/edit_cache.dir
-/home/gegorio/Downloads/PROYECTO FINAL FPOO/build/CMakeFiles/rebuild_cache.dir
