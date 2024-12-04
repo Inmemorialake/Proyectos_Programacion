@@ -1,0 +1,3 @@
+/home/inmemorialake/Documentos/Proyectos-Programaci-n-Sencillos/C++/FPOO/PROYECTO FINAL/build/CMakeFiles/Tienda.dir
+/home/inmemorialake/Documentos/Proyectos-Programaci-n-Sencillos/C++/FPOO/PROYECTO FINAL/build/CMakeFiles/edit_cache.dir
+/home/inmemorialake/Documentos/Proyectos-Programaci-n-Sencillos/C++/FPOO/PROYECTO FINAL/build/CMakeFiles/rebuild_cache.dir
