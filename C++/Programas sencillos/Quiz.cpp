@@ -25,7 +25,7 @@ int main() {
     int primos[27];
     int contador = 0;
 
-    for (int i = 0; i <= 104; i++) {
+    for (int i = 0; i < 104; i++) {
         if (esPrimo(i) == true){
             primos[contador] = i;
             contador = contador + 1;
