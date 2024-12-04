@@ -1,0 +1,68 @@
+[
+{
+  "directory": "/home/gegorio/Downloads/PROYECTO FINAL FPOO/build",
+  "command": "/usr/bin/g++ -I\"/home/gegorio/Downloads/PROYECTO FINAL FPOO/include\" -g -std=gnu++17 -o CMakeFiles/Tienda.dir/src/barca.cpp.o -c \"/home/gegorio/Downloads/PROYECTO FINAL FPOO/src/barca.cpp\"",
+  "file": "/home/gegorio/Downloads/PROYECTO FINAL FPOO/src/barca.cpp",
+  "output": "CMakeFiles/Tienda.dir/src/barca.cpp.o"
+},
+{
+  "directory": "/home/gegorio/Downloads/PROYECTO FINAL FPOO/build",
+  "command": "/usr/bin/g++ -I\"/home/gegorio/Downloads/PROYECTO FINAL FPOO/include\" -g -std=gnu++17 -o CMakeFiles/Tienda.dir/src/conejo.cpp.o -c \"/home/gegorio/Downloads/PROYECTO FINAL FPOO/src/conejo.cpp\"",
+  "file": "/home/gegorio/Downloads/PROYECTO FINAL FPOO/src/conejo.cpp",
+  "output": "CMakeFiles/Tienda.dir/src/conejo.cpp.o"
+},
+{
+  "directory": "/home/gegorio/Downloads/PROYECTO FINAL FPOO/build",
+  "command": "/usr/bin/g++ -I\"/home/gegorio/Downloads/PROYECTO FINAL FPOO/include\" -g -std=gnu++17 -o CMakeFiles/Tienda.dir/src/individuo.cpp.o -c \"/home/gegorio/Downloads/PROYECTO FINAL FPOO/src/individuo.cpp\"",
+  "file": "/home/gegorio/Downloads/PROYECTO FINAL FPOO/src/individuo.cpp",
+  "output": "CMakeFiles/Tienda.dir/src/individuo.cpp.o"
+},
+{
+  "directory": "/home/gegorio/Downloads/PROYECTO FINAL FPOO/build",
+  "command": "/usr/bin/g++ -I\"/home/gegorio/Downloads/PROYECTO FINAL FPOO/include\" -g -std=gnu++17 -o CMakeFiles/Tienda.dir/src/jugador.cpp.o -c \"/home/gegorio/Downloads/PROYECTO FINAL FPOO/src/jugador.cpp\"",
+  "file": "/home/gegorio/Downloads/PROYECTO FINAL FPOO/src/jugador.cpp",
+  "output": "CMakeFiles/Tienda.dir/src/jugador.cpp.o"
+},
+{
+  "directory": "/home/gegorio/Downloads/PROYECTO FINAL FPOO/build",
+  "command": "/usr/bin/g++ -I\"/home/gegorio/Downloads/PROYECTO FINAL FPOO/include\" -g -std=gnu++17 -o CMakeFiles/Tienda.dir/src/lechuga.cpp.o -c \"/home/gegorio/Downloads/PROYECTO FINAL FPOO/src/lechuga.cpp\"",
+  "file": "/home/gegorio/Downloads/PROYECTO FINAL FPOO/src/lechuga.cpp",
+  "output": "CMakeFiles/Tienda.dir/src/lechuga.cpp.o"
+},
+{
+  "directory": "/home/gegorio/Downloads/PROYECTO FINAL FPOO/build",
+  "command": "/usr/bin/g++ -I\"/home/gegorio/Downloads/PROYECTO FINAL FPOO/include\" -g -std=gnu++17 -o CMakeFiles/Tienda.dir/src/logica.cpp.o -c \"/home/gegorio/Downloads/PROYECTO FINAL FPOO/src/logica.cpp\"",
+  "file": "/home/gegorio/Downloads/PROYECTO FINAL FPOO/src/logica.cpp",
+  "output": "CMakeFiles/Tienda.dir/src/logica.cpp.o"
+},
+{
+  "directory": "/home/gegorio/Downloads/PROYECTO FINAL FPOO/build",
+  "command": "/usr/bin/g++ -I\"/home/gegorio/Downloads/PROYECTO FINAL FPOO/include\" -g -std=gnu++17 -o CMakeFiles/Tienda.dir/src/lugar.cpp.o -c \"/home/gegorio/Downloads/PROYECTO FINAL FPOO/src/lugar.cpp\"",
+  "file": "/home/gegorio/Downloads/PROYECTO FINAL FPOO/src/lugar.cpp",
+  "output": "CMakeFiles/Tienda.dir/src/lugar.cpp.o"
+},
+{
+  "directory": "/home/gegorio/Downloads/PROYECTO FINAL FPOO/build",
+  "command": "/usr/bin/g++ -I\"/home/gegorio/Downloads/PROYECTO FINAL FPOO/include\" -g -std=gnu++17 -o CMakeFiles/Tienda.dir/src/main.cpp.o -c \"/home/gegorio/Downloads/PROYECTO FINAL FPOO/src/main.cpp\"",
+  "file": "/home/gegorio/Downloads/PROYECTO FINAL FPOO/src/main.cpp",
+  "output": "CMakeFiles/Tienda.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/gegorio/Downloads/PROYECTO FINAL FPOO/build",
+  "command": "/usr/bin/g++ -I\"/home/gegorio/Downloads/PROYECTO FINAL FPOO/include\" -g -std=gnu++17 -o CMakeFiles/Tienda.dir/src/orilla.cpp.o -c \"/home/gegorio/Downloads/PROYECTO FINAL FPOO/src/orilla.cpp\"",
+  "file": "/home/gegorio/Downloads/PROYECTO FINAL FPOO/src/orilla.cpp",
+  "output": "CMakeFiles/Tienda.dir/src/orilla.cpp.o"
+},
+{
+  "directory": "/home/gegorio/Downloads/PROYECTO FINAL FPOO/build",
+  "command": "/usr/bin/g++ -I\"/home/gegorio/Downloads/PROYECTO FINAL FPOO/include\" -g -std=gnu++17 -o CMakeFiles/Tienda.dir/src/robot.cpp.o -c \"/home/gegorio/Downloads/PROYECTO FINAL FPOO/src/robot.cpp\"",
+  "file": "/home/gegorio/Downloads/PROYECTO FINAL FPOO/src/robot.cpp",
+  "output": "CMakeFiles/Tienda.dir/src/robot.cpp.o"
+},
+{
+  "directory": "/home/gegorio/Downloads/PROYECTO FINAL FPOO/build",
+  "command": "/usr/bin/g++ -I\"/home/gegorio/Downloads/PROYECTO FINAL FPOO/include\" -g -std=gnu++17 -o CMakeFiles/Tienda.dir/src/zorro.cpp.o -c \"/home/gegorio/Downloads/PROYECTO FINAL FPOO/src/zorro.cpp\"",
+  "file": "/home/gegorio/Downloads/PROYECTO FINAL FPOO/src/zorro.cpp",
+  "output": "CMakeFiles/Tienda.dir/src/zorro.cpp.o"
+}
+]
