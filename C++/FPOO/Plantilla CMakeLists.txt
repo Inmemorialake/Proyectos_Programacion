@@ -9,3 +9,11 @@ include_directories(include)  # Añade el directorio de encabezados
 file(GLOB SOURCES "src/*.cpp")  # Añade todos los archivos fuente
 
 add_executable(  ${SOURCES)  # Añade el ejecutable y los archivos fuente
+
+#Para correr un proyecto de Cmake:
+#
+# mkdir build
+# cd build
+# cmake ..
+# make
+# ./Mi_proyecto
