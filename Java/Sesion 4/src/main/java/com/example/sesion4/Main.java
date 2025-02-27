@@ -2,6 +2,7 @@ package com.example.sesion4;
 
 import com.example.sesion4.model.Cat;
 import com.example.sesion4.model.Dog;
+import com.example.sesion4.model.Smartphone;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -14,6 +15,12 @@ public class Main extends Application {
 
         Cat cat = new Cat();
         cat.makeSound();
+
+        Smartphone smartphone = new Smartphone();
+        smartphone.getAproximateCoordinates();
+        smartphone.getCoordinates();
+        smartphone.nextMusicPlayer();
+        smartphone.nextRadio();
     }
 
 
