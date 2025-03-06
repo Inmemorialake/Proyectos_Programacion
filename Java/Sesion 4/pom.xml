@@ -7,7 +7,7 @@
     <groupId>com.example</groupId>
     <artifactId>Sesion4</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Sesion 4</name>
+    <name>Sesion 5</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -60,7 +60,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.example.sesion4/com.example.sesion4.HelloApplication</mainClass>
+                            <mainClass>com.example.sesion5/com.example.sesion4.HelloApplication</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
