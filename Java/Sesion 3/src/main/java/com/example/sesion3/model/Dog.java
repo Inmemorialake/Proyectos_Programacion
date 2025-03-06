@@ -1,4 +1,4 @@
-package com.example.sesion4.model;
+package com.example.sesion3.model;
 
 public class Dog implements IAnimal {
     @Override

@@ -1,4 +1,4 @@
-package com.example.sesion4.view;
+package com.example.sesion3.view;
 
 import javafx.stage.Stage;
 

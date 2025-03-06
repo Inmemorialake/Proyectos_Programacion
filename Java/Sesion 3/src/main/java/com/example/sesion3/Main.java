@@ -1,8 +1,8 @@
-package com.example.sesion4;
+package com.example.sesion3;
 
-import com.example.sesion4.model.Cat;
-import com.example.sesion4.model.Dog;
-import com.example.sesion4.model.Smartphone;
+import com.example.sesion3.model.Cat;
+import com.example.sesion3.model.Dog;
+import com.example.sesion3.model.Smartphone;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>Sesion4</artifactId>
+    <artifactId>Sesion3</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>Sesion 4</name>
 
@@ -60,7 +60,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.example.sesion4/com.example.sesion4.HelloApplication</mainClass>
+                            <mainClass>com.example.sesion4/com.example.sesion3.HelloApplication</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
