@@ -1,8 +1,8 @@
-module com.example.sesion5 {
+module com.example.sesion4 {
     requires javafx.controls;
     requires javafx.fxml;
 
 
-    opens com.example.sesion5 to javafx.fxml;
-    exports com.example.sesion5;
+    opens com.example.sesion4 to javafx.fxml;
+    exports com.example.sesion4;
 }

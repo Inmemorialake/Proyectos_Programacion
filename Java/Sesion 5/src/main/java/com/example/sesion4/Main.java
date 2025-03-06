@@ -1,5 +1,6 @@
-package com.example.sesion5;
+package com.example.sesion4;
 
+import com.example.sesion4.view.HomeStage;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -10,7 +11,7 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) {
-
+    public void start (Stage primaryStage) {
+        new HomeStage();
     }
 }
