@@ -1,5 +1,6 @@
 package com.example.sesion4.view;
 
+import com.example.sesion4.controller.HomeController;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -16,6 +17,9 @@ import javafx.stage.Stage;
 public class HomeStage extends Stage {
     private VBox root;
     private Scene scene;
+    private TextField secretWordTextField;
+    private Button playButton;
+    private HomeController homeController;
 
     public HomeStage() {
         root = new VBox();
@@ -24,6 +28,7 @@ public class HomeStage extends Stage {
         scene = new Scene(root, 512, 256);
         initStage();
         ShowHome();
+        initController();
     }
 
     private void initStage() {
@@ -38,8 +43,12 @@ public class HomeStage extends Stage {
         Label tittleLabel = new Label("Digite la palabra secreta");
         tittleLabel.setTextFill(Color.MIDNIGHTBLUE);
         tittleLabel.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 16));
-        TextField secretWordTextField = new TextField();
-        Button startButton = new Button("Iniciar");
-        root.getChildren().addAll(tittleLabel, secretWordTextField, startButton);
+        secretWordTextField = new TextField();
+        playButton = new Button("Iniciar");
+        root.getChildren().addAll(tittleLabel, secretWordTextField, playButton);
+    }
+
+    private void initController() {
+        homeController = new HomeController(playButton, secretWordTextField);
     }
 }
