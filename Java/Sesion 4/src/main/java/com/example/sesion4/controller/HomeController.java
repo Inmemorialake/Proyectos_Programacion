@@ -1,5 +1,6 @@
 package com.example.sesion4.controller;
 
+import com.example.sesion4.model.Palabra;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
@@ -15,8 +16,8 @@ public class HomeController {
 
     private void handlePlay() {
         playButton.setOnAction(ActionEvent -> {
-            String secretWord = secretWordTextField.getText();
-            System.out.println(secretWord);
+            Palabra secretWord = new Palabra(secretWordTextField.getText());
+            System.out.println(secretWord.getLongitud());
         });
     }
 
