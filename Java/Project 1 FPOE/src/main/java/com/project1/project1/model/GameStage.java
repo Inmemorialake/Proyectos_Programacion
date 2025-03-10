@@ -5,41 +5,71 @@ import java.util.Scanner;
 public class GameStage {
     private final String SecretWord;
     private int Attempts;
-    private int HelpAttempts;
-    private boolean GameOver;
+    private int counter;
+    private int LastPosition;
+    private boolean[] LetterFound;
 
     public GameStage(String secretWord) {
         SecretWord = secretWord;
         Attempts = 8;
-        HelpAttempts = 4;
-        GameOver = false;
+        counter = 8;
+        LastPosition = 0;
+        LetterFound = new boolean[SecretWord.length()];
     }
 
     public void StartGame() {
         System.out.println("Perfecto! Ahora adivina la palabra secreta: ");
-        while (!GameOver && Attempts > 0) {
-            String UserWord = new Scanner(System.in).nextLine().trim();
-            if (VerifyWord(UserWord)) {
-                GameOver = true;
-            }
-        }
-    }
-
-    public boolean VerifyWord(String word) {
-        if (word.equals(SecretWord)) {
-            System.out.println("Felicidades! Has adivinado la palabra secreta: " + SecretWord);
-            return true;
-        } else {
-            Attempts--;
-            if (Attempts == 0) {
-                System.out.println("Has perdido! La palabra secreta era: " + SecretWord);
+        String word = new Scanner(System.in).nextLine();
+        while (!LetterFound[SecretWord.length()-1]) {
+            if (Attempts == 0){
+                System.out.println("Perdiste! La palabra secreta era: " + SecretWord);
+                break;
             }
             else {
-                System.out.println("Palabra incorrecta, intentos restantes: " + Attempts);
-                System.out.println("Intentalo de nuevo : ");
+                if (LastPosition == 0) {
+                    checkLetters(word);
+                }
+                else {
+                    word = AskInNewAttempt();
+                    checkLetters(word);
+                }
             }
-            return false;
+
         }
     }
 
+    public void checkLetters(String word) {
+        if (Attempts == counter) {
+            for (int i = LastPosition; i < SecretWord.length(); i++) {
+                if (SecretWord.charAt(i) == word.charAt(i)) {
+                    LetterFound[i] = true;
+                } else {
+                    --Attempts;
+                    System.out.println("Letra incorrecta en la posición " + (i + 1) + ", intentos restantes: " + Attempts);
+                    LastPosition = i;
+                    break;
+                }
+            }
+        }
+        else {
+            word = AskInNewAttempt();
+            --counter;
+            checkLetters(word);
+        }
+    }
+
+    public String AskInNewAttempt() {
+        System.out.println("Tus aciertos fueron:");
+        for (int i = 0; i < SecretWord.length(); i++) {
+            if (LetterFound[i]) {
+                System.out.print(SecretWord.charAt(i));
+            }
+            else {
+                System.out.print("_");
+            }
+        }
+        System.out.println("\nIngrese lo que falta de la palabra: ");
+        return new Scanner(System.in).nextLine();
+    }
 }
+
