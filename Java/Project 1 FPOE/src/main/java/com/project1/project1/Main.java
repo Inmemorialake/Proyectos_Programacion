@@ -1,9 +1,8 @@
 package com.project1.project1;
+
 import com.project1.project1.model.GameStage;
 import javafx.application.Application;
 import javafx.stage.Stage;
-
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main extends Application {
