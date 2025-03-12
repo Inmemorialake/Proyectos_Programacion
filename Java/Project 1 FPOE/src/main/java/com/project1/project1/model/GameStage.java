@@ -53,5 +53,9 @@ public class GameStage {
         System.out.println("Ingrese lo que falta de la palabra: ");
         return scanner.nextLine().toLowerCase();
     }
+
+    public String getSecretWord() {
+        return SecretWord;
+    }
 }
 
