@@ -1,15 +1,17 @@
 package com.project1.project1.controller;
 
 import com.project1.project1.model.GameStage;
+import com.project1.project1.view.GameScreen;
 import com.project1.project1.view.StartScreen;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
-// Class that controls the stage ans communicates with the view
+// Class that controls the stage and communicates with the view
 public class StageController {
     private StartScreen startScreen;
+    private GameScreen gameScreen;
     GameStage gameStage;
 
     // Constructor of the class
@@ -23,7 +25,10 @@ public class StageController {
     // Method that handles the start button
     private void handleStart() {
         startScreen.getPlayButton().setOnAction(actionEvent -> {
-            System.out.println(startScreen.getSecretWordTextField().getText());
+            gameStage = new GameStage(startScreen.getSecretWordTextField().getText());
+            startScreen.close();
+            gameScreen = new GameScreen(gameStage);
+
 
         });
     }
