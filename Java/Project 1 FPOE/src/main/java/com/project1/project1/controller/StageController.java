@@ -5,6 +5,8 @@ import com.project1.project1.view.GameScreen;
 import com.project1.project1.view.StartScreen;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
@@ -25,17 +27,44 @@ public class StageController {
     // Method that handles the start button
     private void handleStart() {
         startScreen.getPlayButton().setOnAction(actionEvent -> {
-            gameStage = new GameStage(startScreen.getSecretWordTextField().getText());
-            startScreen.close();
-            gameScreen = new GameScreen(gameStage);
+            if (startScreen.getSecretWordTextField().getText().length() >= 8) {
+                gameStage = new GameStage(startScreen.getSecretWordTextField().getText().trim());
+                startScreen.close();
+                gameScreen = new GameScreen(gameStage);
+                configureListenerTextField(gameScreen.getUserLetterTextField(), gameScreen.getUserLetterTextField(), gameScreen.getErrorLabel());
+                handleHelp();
+            }
+            else {
+                startScreen.getErrorLabel().setText("La palabra debe ser de 8 o mas letras, por favor intenta de nuevo");
+            }
+        });
+    }
 
+    private void handleHelp() {
+        gameScreen.getHelpButton().setOnAction(actionEvent -> {
+            if (gameStage.getHelpCount() < gameStage.getMAX_HELP_USES()){
+                gameStage.revealLetter();
+                gameScreen.updateGameScreen();
+            }
+            else {
+                gameScreen.getErrorLabel().setText("⚠ No puedes usar esa opción ahora mismo");
+                gameScreen.getErrorLabel().setTextFill(Color.RED);
+            }
+            if (gameStage.getHelpCount() == gameStage.getMAX_HELP_USES()){
+                gameScreen.getHelpButton().setDisable(true);
+            }
 
         });
     }
 
+
+
+    // Inner class that sets the default cursor
     private class DefaultCursor implements IMouseStyler{
+        // Method that sets the mouse style
         @Override
         public void setMouseStyle(Button button) {
+            // The mouse and button style when the mouse enters the button
             button.setOnMouseEntered(e -> {
                 button.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(10), null)));
                 button.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(2))));
@@ -43,6 +72,7 @@ public class StageController {
                 button.setCursor(Cursor.HAND);
             });
 
+            // The mouse and button style when the mouse exits the button (and by default)
             button.setOnMouseExited(e -> {
                 button.setBackground(new Background(new BackgroundFill(Color.web("#9e53e2"), new CornerRadii(10), null)));
                 button.setBorder(new Border(new BorderStroke(Color.web("#9e53e2"), BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(2))));
@@ -50,13 +80,54 @@ public class StageController {
                 button.setCursor(Cursor.DEFAULT);
             });
 
+            // The mouse and button style when the mouse is clicked on the button
             button.setOnMouseClicked(e -> {
                 button.setBackground(new Background(new BackgroundFill(Color.web("#6b3099"), new CornerRadii(10), null)));
                 button.setBorder(new Border(new BorderStroke(Color.web("#6b3099"), BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(2))));
                 button.setTextFill(Color.WHITE);
-                button.setCursor(Cursor.DEFAULT);
+                button.setCursor(Cursor.HAND);
             });
-
         }
     }
-}
+
+
+    public void configureListenerTextField(TextField textField, TextField userLetterTextField, Label errorLabel) {
+        textField.textProperty().addListener((observable, oldValue, newValue) -> {
+            String letter = newValue.trim().toLowerCase();
+
+            // Validate if the letter is valid
+            if (letter.length() != 1 || !letter.matches("[a-záéíóúñ]")) {
+                errorLabel.setText("⚠ Solo puedes ingresar UNA letra válida");
+                errorLabel.setTextFill(Color.RED);
+                return;
+            }
+
+            // Validate if the letter has already been guessed
+            if (gameStage.hasGuessedLetter(letter)) {
+                errorLabel.setText("⚠ Ya has ingresado esta letra");
+                errorLabel.setTextFill(Color.RED);
+                return;
+            }
+
+            // Add the letter to the guessed letters
+            gameStage.addGuessedLetters(letter);
+            if (gameStage.checkLetter(letter.charAt(0))) {
+                errorLabel.setText("✅ Letra correcta");
+                errorLabel.setTextFill(Color.GREEN);
+            } else {
+                errorLabel.setText("❌ Letra incorrecta");
+                errorLabel.setTextFill(Color.RED);
+            }
+
+            // Refresh the game screen
+            userLetterTextField.clear();
+            gameScreen.updateGameScreen();
+
+            // Validate if the game is over
+            if (gameStage.isGameOver()) {
+                gameScreen.showGameOver();
+            }
+        });
+    }
+
+};

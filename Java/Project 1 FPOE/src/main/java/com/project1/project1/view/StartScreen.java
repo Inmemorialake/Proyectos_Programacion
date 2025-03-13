@@ -1,7 +1,6 @@
 package com.project1.project1.view;
 
 //Imports
-import com.project1.project1.controller.StageController;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -34,8 +33,10 @@ public class StartScreen extends Stage implements IImage{
         root.setPadding(new javafx.geometry.Insets(10));
         root.backgroundProperty().setValue(new Background(new BackgroundFill(Color.web("#222436"), null, null)));
 
+        //The scene is initialized with the root and its properties
         scene = new Scene(root, 660, 330);
 
+        //The start screen is initialized
         initStartScreen();
         showStartScreen();
     }
@@ -49,10 +50,11 @@ public class StartScreen extends Stage implements IImage{
         show();
     }
 
+    //Method to show the start screen
     private void showStartScreen() {
         // The image (same as icon) is shown in the start screen
         Image image = new Image(getClass().getResourceAsStream("/com/project1/Eclipse Lunar.png"));
-        ShowImage(image);
+        showImage(image);
 
         // Title label
         Label titleLabel = new Label("Bienvenido al juego \"Eclipse Lunar\"");
@@ -124,9 +126,12 @@ public class StartScreen extends Stage implements IImage{
 
     // Method to show the image
     @Override
-    public void ShowImage(Image image) {
+    public void showImage(Image image) {
         Label imageLabel = new Label();
         imageLabel.setGraphic(new javafx.scene.image.ImageView(image));
         root.getChildren().add(imageLabel);
     }
+
+    @Override
+    public void showImage(Label label, Image image) {}
 }
