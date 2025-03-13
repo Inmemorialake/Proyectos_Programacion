@@ -14,6 +14,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 
 //Class that represents the start screen of the game
 public class StartScreen extends Stage {
@@ -21,72 +23,91 @@ public class StartScreen extends Stage {
     private Scene scene;
     private TextField secretWordTextField;
     private Button playButton;
-    private StageController stageController;
+    private Label errorLabel;
 
     //Constructor of the class
     public StartScreen() {
-        //The root are initialized with his properties
+        //The root is initialized with its properties
         root = new VBox();
         root.setAlignment(Pos.CENTER);
         root.setSpacing(10);
         root.setPadding(new javafx.geometry.Insets(10));
-        root.backgroundProperty().setValue(new javafx.scene.layout.Background(new javafx.scene.layout.BackgroundFill(Color.web("#222436"), null, null)));
+        root.backgroundProperty().setValue(new Background(new BackgroundFill(Color.web("#222436"), null, null)));
 
         scene = new Scene(root, 660, 330);
 
         initStartScreen();
         showStartScreen();
-        initController();
     }
 
     //Method to initialize the start screen
     private void initStartScreen() {
-        //The title of the game is shown in the start screen
         setTitle("Miniproyecto 1");
-
-        //The stage is set as not resizable
         setResizable(false);
-
-        //The icon of the game is set
         getIcons().add(new Image(String.valueOf(getClass().getResource("/com/project1/Eclipse Lunar.png"))));
-
-        //The scene is set in the stage
         setScene(scene);
-
-        //The stage is shown
         show();
     }
 
     private void showStartScreen() {
-        //The image (same as icon) is shown in the start screen
+        // The image (same as icon) is shown in the start screen
         Image image = new Image(getClass().getResourceAsStream("/com/project1/Eclipse Lunar.png"));
         ShowImage(image);
 
-        //The title of the game is shown in the start screen and styled
+        // Title label
         Label titleLabel = new Label("Bienvenido al juego \"Eclipse Lunar\"");
         titleLabel.setTextFill(Color.WHITE);
         titleLabel.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 16));
 
-        //The label for the user instructions who are shown in the start screen and styled
+        // Secret word label
         Label secretWordLabel = new Label("Digite la palabra secreta");
         secretWordLabel.setTextFill(Color.WHITE);
         secretWordLabel.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
 
-        //The textfield for the secret word is shown in the start screen and styled
+        // Error message label (hidden by default)
+        errorLabel = new Label();
+        errorLabel.setTextFill(Color.RED);
+        errorLabel.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
+
+        // Secret word textfield
         secretWordTextField = new TextField();
         secretWordTextField.setPrefWidth(200);
         secretWordTextField.setMinWidth(150);
         secretWordTextField.setMaxWidth(300);
-        secretWordTextField.backgroundProperty().setValue(new Background(new BackgroundFill(Color.web("#d2daeb"), new CornerRadii(5), null)));
-        secretWordTextField.setBorder(new Border(new BorderStroke(Color.web("#8ea2cc"), BorderStrokeStyle.SOLID, new CornerRadii(5), new BorderWidths(2))));
+        secretWordTextField.setAlignment(Pos.CENTER);
+        secretWordTextField.backgroundProperty().setValue(new Background(new BackgroundFill(Color.web("#555fa0"), new CornerRadii(5), null)));
+        secretWordTextField.setBorder(new Border(new BorderStroke(Color.web("#9e53e2"), BorderStrokeStyle.SOLID, new CornerRadii(5), new BorderWidths(2))));
+        secretWordTextField.setFont(Font.font("Verdana"));
+        secretWordTextField.setStyle("-fx-text-fill: white"); // I don't know is this is allowed but this is the only way I found to change the text color in the textfield
 
-        //The button to start the game is shown in the start screen
-        //todo Set the button to be disabled when the textfield is empty
-        //todo Style the button
+        // Play button (disabled initially)
         playButton = new Button("Iniciar");
+        playButton.setBackground(new Background(new BackgroundFill(Color.web("#9e53e2"), new CornerRadii(10), null)));
+        playButton.setBorder(new Border(new BorderStroke(Color.web("#9e53e2"), BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(2))));
+        playButton.setTextFill(Color.WHITE);
+        playButton.setDisable(true); // Disabled by default
 
-        //The elements are added to the root
-        root.getChildren().addAll(titleLabel, secretWordLabel,secretWordTextField, playButton);
+        // Real-time validation
+        secretWordTextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (isValidWord(newValue)) {
+                    errorLabel.setText(""); // Remove error message
+                    playButton.setDisable(false);
+                } else {
+                    errorLabel.setText("Palabra inválida: solo letras permitidas.");
+                    playButton.setDisable(true);
+                }
+            }
+        });
+
+        // Add elements to root
+        root.getChildren().addAll(titleLabel, secretWordLabel, secretWordTextField, errorLabel, playButton);
+    }
+
+    // Method to validate the secret word (only letters)
+    private boolean isValidWord(String word) {
+        return word.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ]*+"); // Only allows uppercase letters lowercase letters and vocals with accents.
     }
 
     //Method to show an image in the start screen
@@ -96,8 +117,15 @@ public class StartScreen extends Stage {
         root.getChildren().add(imageLabel);
     }
 
-    //Method to initialize the controller
-    public void initController() {
-        stageController = new StageController(playButton, secretWordTextField);
+    public TextField getSecretWordTextField() {
+        return secretWordTextField;
+    }
+
+    public Button getPlayButton() {
+        return playButton;
+    }
+
+    public Label getErrorLabel() {
+        return errorLabel;
     }
 }
