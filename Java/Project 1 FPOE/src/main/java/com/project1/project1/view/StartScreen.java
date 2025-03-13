@@ -18,7 +18,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
 //Class that represents the start screen of the game
-public class StartScreen extends Stage {
+public class StartScreen extends Stage implements IImage{
     private VBox root;
     private Scene scene;
     private TextField secretWordTextField;
@@ -110,13 +110,6 @@ public class StartScreen extends Stage {
         return word.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ]*+"); // Only allows uppercase letters lowercase letters and vocals with accents.
     }
 
-    //Method to show an image in the start screen
-    private void ShowImage(Image image) {
-        Label imageLabel = new Label();
-        imageLabel.setGraphic(new javafx.scene.image.ImageView(image));
-        root.getChildren().add(imageLabel);
-    }
-
     public TextField getSecretWordTextField() {
         return secretWordTextField;
     }
@@ -127,5 +120,13 @@ public class StartScreen extends Stage {
 
     public Label getErrorLabel() {
         return errorLabel;
+    }
+
+    // Method to show the image
+    @Override
+    public void ShowImage(Image image) {
+        Label imageLabel = new Label();
+        imageLabel.setGraphic(new javafx.scene.image.ImageView(image));
+        root.getChildren().add(imageLabel);
     }
 }
