@@ -1,61 +1,72 @@
 package com.project1.project1.model;
 
-import java.util.Scanner;
-
 public class GameStage {
     private final String SecretWord;
+    private final String NormalizedSecretWord;
     private int Attempts;
     private boolean[] LetterFound;
-    private Scanner scanner = new Scanner(System.in);
 
 
     public GameStage(String secretWord) {
         SecretWord = secretWord;
+        NormalizedSecretWord = secretWord.toLowerCase();
         Attempts = 8;
         LetterFound = new boolean[SecretWord.length()];
     }
 
-    public void StartGame() {
-        System.out.println("Perfecto! Ahora adivina la palabra secreta: ");
-        String word = scanner.nextLine().toLowerCase();
-        while (!word.equals(SecretWord) && Attempts > 1) {
-            checkLetters(word);
-            word = AskInNewAttempt();
-        }
-        if (word.equals(SecretWord)) {
-            System.out.println("Felicidades! Adivinaste la palabra secreta: " + SecretWord);
-        }
-        if (Attempts == 0) {
-            System.out.println("Perdiste! La palabra secreta era: " + SecretWord);
-        }
-    }
-
-    public void checkLetters(String word) {
-        for (int i = 0; i < SecretWord.length(); i++) {
-            if (SecretWord.charAt(i) == word.charAt(i)) {
-                LetterFound[i] = true;
-            }
-        }
-    }
-
-    public String AskInNewAttempt(){
-        Attempts--;
-        System.out.println("Tus aciertos fueron:");
-        for (int i = 0; i < SecretWord.length(); i++) {
-            if (LetterFound[i]) {
-                System.out.print(SecretWord.charAt(i));
-            }
-            else {
-                System.out.print("_");
-            }
-        }
-        System.out.println("\nIntentos restantes: " + Attempts);
-        System.out.println("Ingrese lo que falta de la palabra: ");
-        return scanner.nextLine().toLowerCase();
-    }
-
-    public String getSecretWord() {
+    public String GetSecretWord() {
         return SecretWord;
     }
-}
 
+    public String GetNormalizedSecretWord() {
+        return NormalizedSecretWord;
+    }
+
+    public int GetAttempts() {
+        return Attempts;
+    }
+
+    public boolean[] GetLetterFound() {
+        return LetterFound;
+    }
+
+    public void SetAttempts(int attempts) {
+        Attempts = attempts;
+    }
+
+    public void SetLetterFound(int index, boolean value) {
+        LetterFound[index] = value;
+    }
+
+    public boolean IsWordGuessed() {
+        for (boolean letter : LetterFound) {
+            if (!letter) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean IsGameOver() {
+        return Attempts == 0;
+    }
+
+    public void DecrementAttempts() {
+        Attempts--;
+    }
+
+    public boolean CheckLetter(char letter) {
+        boolean found = false;
+        for (int i = 0; i < SecretWord.length(); i++) {
+            if (NormalizedSecretWord.charAt(i) == letter) {
+                LetterFound[i] = true;
+                found = true;
+            }
+        }
+        if (!found) {
+            DecrementAttempts();
+        }
+        return found;
+    }
+
+}
