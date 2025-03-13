@@ -1,5 +1,11 @@
 package com.project1.project1.controller;
 
+/**
+ * Class that controls the program's logic with the model and communicates with the view
+ * @autor: Inmemorialake (2416541)
+ */
+
+// Imports
 import com.project1.project1.model.GameStage;
 import com.project1.project1.view.GameScreen;
 import com.project1.project1.view.StartScreen;
@@ -10,13 +16,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
-// Class that controls the stage and communicates with the view
 public class StageController {
     private StartScreen startScreen;
     private GameScreen gameScreen;
     GameStage gameStage;
 
-    // Constructor of the class
+    /**
+     * Constructor of the class
+     */
     public StageController() {
         this.startScreen = new StartScreen();
         DefaultCursor defaultCursor = new DefaultCursor();
@@ -24,7 +31,9 @@ public class StageController {
         handleStart();
     }
 
-    // Method that handles the start button
+    /**
+     * Method that handles the start button and verifies if the secret word is valid
+     */
     private void handleStart() {
         startScreen.getPlayButton().setOnAction(actionEvent -> {
             if (startScreen.getSecretWordTextField().getText().length() >= 8) {
@@ -40,6 +49,9 @@ public class StageController {
         });
     }
 
+    /**
+     * Method that handles the help button
+     */
     private void handleHelp() {
         gameScreen.getHelpButton().setOnAction(actionEvent -> {
             if (gameStage.getHelpCount() < gameStage.getMAX_HELP_USES()){
@@ -57,11 +69,14 @@ public class StageController {
         });
     }
 
-
-
-    // Inner class that sets the default cursor
+    /**
+     * Inner class that sets the default cursor style
+     */
     private class DefaultCursor implements IMouseStyler{
-        // Method that sets the mouse style
+        /**
+         * Method that sets the mouse style
+         * @param button The button to set the style
+         */
         @Override
         public void setMouseStyle(Button button) {
             // The mouse and button style when the mouse enters the button
@@ -90,7 +105,12 @@ public class StageController {
         }
     }
 
-
+    /**
+     * Method that configures the listener of the text field
+     * @param textField The text field to configure
+     * @param userLetterTextField The user letter text field
+     * @param errorLabel The error label
+     */
     public void configureListenerTextField(TextField textField, TextField userLetterTextField, Label errorLabel) {
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
             String letter = newValue.trim().toLowerCase();

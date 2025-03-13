@@ -1,5 +1,10 @@
 package com.project1.project1.view;
 
+/**
+ * Class that represents the start screen of the game
+ * @autor: Inmemorialake (2416541)
+ */
+
 //Imports
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -16,7 +21,6 @@ import javafx.stage.Stage;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
-//Class that represents the start screen of the game
 public class StartScreen extends Stage implements IImage{
     private VBox root;
     private Scene scene;
@@ -24,7 +28,9 @@ public class StartScreen extends Stage implements IImage{
     private Button playButton;
     private Label errorLabel;
 
-    //Constructor of the class
+    /**
+     * Constructor of the class
+     */
     public StartScreen() {
         //The root is initialized with its properties
         root = new VBox();
@@ -41,7 +47,9 @@ public class StartScreen extends Stage implements IImage{
         showStartScreen();
     }
 
-    //Method to initialize the start screen
+    /**
+     * Method to initialize the start screen
+     */
     private void initStartScreen() {
         setTitle("Miniproyecto 1");
         setResizable(false);
@@ -50,7 +58,9 @@ public class StartScreen extends Stage implements IImage{
         show();
     }
 
-    //Method to show the start screen
+    /**
+     * Method to show the start screen
+     */
     private void showStartScreen() {
         // The image (same as icon) is shown in the start screen
         Image image = new Image(getClass().getResourceAsStream("/com/project1/Eclipse Lunar.png"));
@@ -107,10 +117,25 @@ public class StartScreen extends Stage implements IImage{
         root.getChildren().addAll(titleLabel, secretWordLabel, secretWordTextField, errorLabel, playButton);
     }
 
-    // Method to validate the secret word (only letters)
+    /**
+     * Method to validate the secret word (only letters)
+     */
     private boolean isValidWord(String word) {
         return word.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ]*+"); // Only allows uppercase letters lowercase letters and vocals with accents.
     }
+
+    /**
+     * Method to show the image
+     */
+    @Override
+    public void showImage(Image image) {
+        Label imageLabel = new Label();
+        imageLabel.setGraphic(new javafx.scene.image.ImageView(image));
+        root.getChildren().add(imageLabel);
+    }
+
+    @Override
+    public void showImage(Label label, Image image) {}
 
     public TextField getSecretWordTextField() {
         return secretWordTextField;
@@ -123,15 +148,4 @@ public class StartScreen extends Stage implements IImage{
     public Label getErrorLabel() {
         return errorLabel;
     }
-
-    // Method to show the image
-    @Override
-    public void showImage(Image image) {
-        Label imageLabel = new Label();
-        imageLabel.setGraphic(new javafx.scene.image.ImageView(image));
-        root.getChildren().add(imageLabel);
-    }
-
-    @Override
-    public void showImage(Label label, Image image) {}
 }

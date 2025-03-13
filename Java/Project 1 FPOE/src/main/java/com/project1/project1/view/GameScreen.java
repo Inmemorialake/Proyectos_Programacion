@@ -1,5 +1,11 @@
 package com.project1.project1.view;
 
+/**
+ * Class that represents the game screen of the game
+ * @autor: Inmemorialake (2416541)
+ */
+
+//Imports
 import com.project1.project1.model.GameStage;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -15,8 +21,6 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-
-//Class that represents the game screen of the game
 public class GameScreen extends Stage implements IImage {
 
     private GameStage gameStage;
@@ -34,7 +38,10 @@ public class GameScreen extends Stage implements IImage {
     private Button helpButton;
 
 
-    //Constructor of the class
+    /**
+     * Constructor of the class
+     * @param gameStage The game stage
+     */
     public GameScreen(GameStage gameStage) {
         //The root is initialized with its properties
         this.gameStage = gameStage;
@@ -57,7 +64,9 @@ public class GameScreen extends Stage implements IImage {
         showGameScreen();
     }
 
-    //Method to initialize the game screen
+    /**
+     * Method to initialize the game screen
+     */
     private void initGameScreen() {
         setTitle("Miniproyecto 1");
         setResizable(false);
@@ -66,7 +75,9 @@ public class GameScreen extends Stage implements IImage {
         show();
     }
 
-    //Method to show the game screen
+    /**
+     * Method to show the game screen
+     */
     private void showGameScreen() {
         // Title label
         Label titleLabel = new Label("Eclipse Lunar");
@@ -105,6 +116,7 @@ public class GameScreen extends Stage implements IImage {
         hBox.setPadding(new Insets(10, 10, 10, 10));
         hBox.minHeight(400);
 
+        // Help button
         helpButton = new Button("Ayuda");
         helpButton.setBackground(new Background(new BackgroundFill(Color.web("#9e53e2"), new CornerRadii(10), null)));
         helpButton.setBorder(new Border(new BorderStroke(Color.web("#9e53e2"), BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(2))));
@@ -147,6 +159,11 @@ public class GameScreen extends Stage implements IImage {
         root.getChildren().add(errorLabel);
     }
 
+    /**
+     * Method to show the image
+     * @param image The image to show
+     */
+
     @Override
     public void showImage(Image image) {};
 
@@ -155,6 +172,9 @@ public class GameScreen extends Stage implements IImage {
         label.setGraphic(new javafx.scene.image.ImageView(image));
     }
 
+    /**
+     * Method to set the phase of the moon
+     */
     public void setPhase(){
         switch (gameStage.getAttempts()){
             case 0:
@@ -199,14 +219,10 @@ public class GameScreen extends Stage implements IImage {
                 moonImage = new Image(String.valueOf(getClass().getResource("/com/project1/Eclipse Lunar.png")));
         }
     }
-    public TextField getUserLetterTextField() {
-        return userLetterTextField;
-    }
 
-    public Label getErrorLabel() {
-        return errorLabel;
-    }
-
+    /**
+     * Method to update the game screen
+     */
     public void updateGameScreen() {
         for (int i = 0; i < gameStage.getSecretWord().length(); i++) {
             if (gameStage.getLetterFound()[i]) {
@@ -229,6 +245,9 @@ public class GameScreen extends Stage implements IImage {
 
     }
 
+    /**
+     * Method to show the game over
+     */
     public void showGameOver() {
         if (gameStage.isWordGuessed()) {
             errorLabel.setText("¡Felicidades! Has adivinado la palabra secreta");
@@ -245,6 +264,14 @@ public class GameScreen extends Stage implements IImage {
 
     public Label[] getWordLabel() {
         return guessedWordLabel;
+    }
+
+    public TextField getUserLetterTextField() {
+        return userLetterTextField;
+    }
+
+    public Label getErrorLabel() {
+        return errorLabel;
     }
 
 }
