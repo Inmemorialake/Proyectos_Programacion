@@ -1,7 +1,6 @@
 package com.project1.project1;
 
 import com.project1.project1.controller.StageController;
-import com.project1.project1.view.StartScreen;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
