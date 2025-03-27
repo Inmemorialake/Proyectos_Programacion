@@ -17,6 +17,5 @@ public interface IImage {
     /** @param image An Image to show
      *  @param label The label where the image is allocated
      */
-    /** @param image An Image to show and   */
     public void showImage(Label label,Image image);
 }
