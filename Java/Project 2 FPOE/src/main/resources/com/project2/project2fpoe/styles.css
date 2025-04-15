@@ -9,6 +9,7 @@
     -fx-font-family: "JetBrains Mono", monospace;
     -fx-font-size: 28px;
     -fx-font-weight: bold;
+    -fx-padding: 10px;
 }
 
 /* Grid general */
@@ -64,6 +65,10 @@
 .block-top {
     -fx-border-top-width: 3px;
     -fx-border-color: #358bfc;
+}
+
+.bottomContainer {
+    -fx-padding: 20px; /* Margen inferior */
 }
 
 /* Estilos del boton de ayuda */
