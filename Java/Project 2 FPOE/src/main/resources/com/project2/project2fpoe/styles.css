@@ -1,0 +1,55 @@
+/* =======================
+   Paleta de colores base
+   ======================= */
+
+.root {
+    -fx-background-color: #0F1A1E; /* fondo general */
+}
+
+/* =======================
+   Título
+   ======================= */
+.titleLabel {
+    -fx-text-fill: #35B7FF;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-padding: 15 0 10 0;
+}
+
+/* =======================
+   Cuadrícula de Sudoku
+   ======================= */
+.sudoku-grid {
+    -fx-background-color: #1A252A;
+    -fx-padding: 10;
+    -fx-border-color: #35B7FF;
+    -fx-border-width: 2;
+    -fx-border-radius: 5;
+}
+
+/* =======================
+   Celdas individuales
+   ======================= */
+.sudokuCell {
+    -fx-background-color: #2C3C42;
+    -fx-text-fill: #A7C4D3;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-border-color: #5FC0D1;
+    -fx-border-width: 1;
+    -fx-border-radius: 3;
+}
+
+/* Celda seleccionada (opcional, setéala dinámicamente en Java) */
+.sudokuCell:focused {
+    -fx-border-color: #0096E8;
+    -fx-border-width: 2;
+}
+
+/* Celdas con error (podés agregar/quitar esta clase desde Java) */
+.sudokuCell-error {
+    -fx-background-color: #3A1E1E;
+    -fx-border-color: #FF4444;
+    -fx-text-fill: #FFAAAA;
+}
