@@ -1,55 +1,61 @@
-/* =======================
-   Paleta de colores base
-   ======================= */
-
 .root {
-    -fx-background-color: #0F1A1E; /* fondo general */
+    -fx-background-color: #222436;
+    -fx-padding: 20;
 }
 
-/* =======================
-   Título
-   ======================= */
+/* Título principal */
 .titleLabel {
-    -fx-text-fill: #35B7FF;
-    -fx-font-size: 24px;
+    -fx-text-fill: #358bfc;
+    -fx-font-family: "JetBrains Mono", monospace;
+    -fx-font-size: 28px;
     -fx-font-weight: bold;
-    -fx-padding: 15 0 10 0;
 }
 
-/* =======================
-   Cuadrícula de Sudoku
-   ======================= */
+/* Grid general */
 .sudoku-grid {
-    -fx-background-color: #1A252A;
-    -fx-padding: 10;
-    -fx-border-color: #35B7FF;
-    -fx-border-width: 2;
-    -fx-border-radius: 5;
+    -fx-background-color: transparent;
 }
 
-/* =======================
-   Celdas individuales
-   ======================= */
+/* Celda editable */
 .sudokuCell {
-    -fx-background-color: #2C3C42;
-    -fx-text-fill: #A7C4D3;
+    -fx-background-color: #90cbff;
+    -fx-text-fill: #ffffff;
     -fx-font-size: 18px;
-    -fx-font-weight: bold;
+    -fx-font-family: "JetBrains Mono", monospace;
     -fx-alignment: center;
-    -fx-border-color: #5FC0D1;
-    -fx-border-width: 1;
-    -fx-border-radius: 3;
+    -fx-border-color: #111E26;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
 }
 
-/* Celda seleccionada (opcional, setéala dinámicamente en Java) */
+/* Hover */
+.sudokuCell:hover {
+    -fx-background-color: #4da6ff;
+    -fx-cursor: hand;
+}
+
+/* Celda con foco */
 .sudokuCell:focused {
-    -fx-border-color: #0096E8;
-    -fx-border-width: 2;
+    -fx-border-color: #358bfc;
+    -fx-border-width: 2px;
+    -fx-background-color: #358bfc;
 }
 
-/* Celdas con error (podés agregar/quitar esta clase desde Java) */
-.sudokuCell-error {
-    -fx-background-color: #3A1E1E;
-    -fx-border-color: #FF4444;
-    -fx-text-fill: #FFAAAA;
+/* Celdas predefinidas (no editables) */
+.sudokuCell.predefined {
+    -fx-background-color: #358bfc;
+    -fx-text-fill: #111E26;
+    -fx-font-weight: bold;
+    -fx-opacity: 1.0;
+}
+
+/* Bordes gruesos para separar bloques 3x2 manualmente con estilo extra opcional */
+.block-left {
+    -fx-border-left-width: 3px;
+    -fx-border-color: #358bfc;
+}
+
+.block-top {
+    -fx-border-top-width: 3px;
+    -fx-border-color: #358bfc;
 }
