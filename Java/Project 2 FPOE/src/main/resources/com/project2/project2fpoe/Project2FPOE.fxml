@@ -5,14 +5,15 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.geometry.Insets?>
 
+<?import javafx.scene.control.Button?>
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.project2.project2fpoe.controller.SudokuController"
             prefWidth="400"
-            prefHeight="450"
+            prefHeight="500"
             stylesheets="@styles.css">
 
     <top>
-        <Label text="Sudoku"
+        <Label text="Sudoku 6x6"
                styleClass="titleLabel"
                BorderPane.alignment="CENTER"/>
     </top>
@@ -29,5 +30,15 @@
         </GridPane>
 
     </center>
+
+    <bottom>
+        <Button text="Ayuda"
+                fx:id="btnAyuda"
+                styleClass="helpButton"
+                BorderPane.alignment="CENTER"
+                maxWidth="120"
+                prefHeight="40"
+        />
+    </bottom>
 
 </BorderPane>

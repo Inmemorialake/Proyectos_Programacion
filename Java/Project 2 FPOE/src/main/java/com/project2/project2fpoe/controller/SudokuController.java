@@ -15,7 +15,6 @@ public class SudokuController implements Initializable {
         createGrid();
     }
 
-    //Method that create the textfields in the grid
     private void createGrid() {
         for (int row = 0; row < 6; row++) {
             for (int col = 0; col < 6; col++) {
@@ -23,7 +22,6 @@ public class SudokuController implements Initializable {
                 cell.setPrefSize(60, 60);
                 cell.getStyleClass().add("sudokuCell");
 
-                // Borde más grueso entre bloques 3x2
                 StringBuilder borderStyle = new StringBuilder("-fx-border-color: #358bfc;");
                 borderStyle.append("-fx-border-width: ");
 
