@@ -3,7 +3,6 @@
     -fx-padding: 20;
 }
 
-/* Título principal */
 .titleLabel {
     -fx-text-fill: #358bfc;
     -fx-font-family: "JetBrains Mono", monospace;
@@ -12,59 +11,43 @@
     -fx-padding: 10px;
 }
 
-/* Grid general */
 .sudoku-grid {
     -fx-background-color: transparent;
-    -fx-border-color: #358bfc;
+    -fx-border-color: #3a8bfc;
     -fx-border-width: 3px;
     -fx-border-radius: 6px;
-    -fx-padding: 10;
+    -fx-padding: 15px;
 }
 
-/* Celda editable */
 .sudokuCell {
     -fx-background-color: #90cbff;
     -fx-text-fill: #ffffff;
     -fx-font-size: 18px;
     -fx-font-family: "JetBrains Mono", monospace;
     -fx-alignment: center;
-    -fx-border-color: #111E26;
-    -fx-border-width: 1px;
+    -fx-border-color: #3a8bfc;
+    -fx-border-width: 3px;
     -fx-border-radius: 3px;
     -fx-effect: dropshadow(gaussian, #00000066, 3, 0.5, 1, 1);
 }
 
-/* Hover */
 .sudokuCell:hover {
-    -fx-background-color: #4da6ff;
+    -fx-background-color: #358bfc;
     -fx-cursor: hand;
 }
 
-/* Celda con foco */
 .sudokuCell:focused {
-    -fx-border-color: #358bfc;
+    -fx-border-color: #3a8bfc;
     -fx-border-width: 2px;
     -fx-background-color: #358bfc;
 }
 
-/* Celdas predefinidas (no editables) */
 .sudokuCell.predefined {
-    -fx-background-color: #358bfc;
-    -fx-text-fill: #111E26;
+    -fx-background-color: #1f6cf1;
+    -fx-border-color: #1f6cf1;
+    -fx-text-fill: #ffffff;
     -fx-font-weight: bold;
     -fx-opacity: 1.0;
-}
-
-/* Bordes gruesos para separar bloques 3x2 manualmente con estilo extra opcional */
-.block-left {
-    -fx-border-left-width: 3px;
-    -fx-border-color: #358bfc;
-}
-
-/* Estilo adicional opcional para bordes gruesos entre bloques */
-.block-top {
-    -fx-border-top-width: 3px;
-    -fx-border-color: #358bfc;
 }
 
 .bottomContainer {
@@ -72,13 +55,12 @@
 }
 
 .bottomLabel {
-    -fx-text-fill: #ffffff;
+    -fx-text-fill: #358bfc;
     -fx-font-family: "JetBrains Mono", monospace;
     -fx-font-size: 16px;
     -fx-padding: 10px;
 }
 
-/* Estilos del boton de ayuda */
 .helpButton {
     -fx-background-color: #358bfc;
     -fx-text-fill: white;

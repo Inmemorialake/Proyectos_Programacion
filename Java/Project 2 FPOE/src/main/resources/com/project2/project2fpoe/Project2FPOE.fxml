@@ -21,8 +21,8 @@
 
     <center>
         <GridPane fx:id="sudokuGrid"
-                  hgap="2"
-                  vgap="2"
+                  hgap="5"
+                  vgap="5"
                   styleClass="sudoku-grid"
                   BorderPane.alignment="CENTER">
             <padding>

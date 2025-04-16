@@ -1,16 +1,13 @@
 package com.project2.project2fpoe.controller;
 
 import com.project2.project2fpoe.model.Sudoku;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.util.Duration;
-
+import javafx.scene.paint.Color;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -36,34 +33,12 @@ public class SudokuController implements Initializable {
     }
 
     private void createGrid() {
-
-        // Crear un Timeline para verificar si el Sudoku está resuelto
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(500), event -> {
-            if (sudoku.isSolved()) {
-                disableSudoku();
-            }
-        }));
-        timeline.setCycleCount(Timeline.INDEFINITE); // Repetir indefinidamente
-        timeline.play();
-
         for (int row = 0; row < 6; row++) {
             for (int col = 0; col < 6; col++) {
+
                 TextField cell = new TextField();
                 cell.setPrefSize(60, 60);
                 cell.getStyleClass().add("sudokuCell");
-
-                // Estilo de bordes 3x2
-                StringBuilder borderStyle = new StringBuilder("-fx-border-color: #358bfc;");
-                double top = (row % 2 == 0) ? 3 : 0.5;
-                double left = (col % 3 == 0) ? 3 : 0.5;
-                double bottom = (row == 5) ? 3 : 0.5;
-                double right = (col == 5) ? 3 : 0.5;
-                borderStyle.append("-fx-border-width: ")
-                        .append(top).append(" ")
-                        .append(right).append(" ")
-                        .append(bottom).append(" ")
-                        .append(left).append(";");
-                cell.setStyle(borderStyle.toString());
 
                 int finalRow = row;
                 int finalCol = col;
@@ -75,16 +50,14 @@ public class SudokuController implements Initializable {
                     cell.setEditable(false);
                     cell.getStyleClass().add("predefined");
                 } else {
-                    // Celda editable → permite entrada del usuario
                     cell.textProperty().addListener((observable, oldValue, newValue) -> {
                         if (newValue.matches("[1-6]?")) { // solo 1 a 6 o vacío
                             if (!newValue.isEmpty()) {
                                 int value = Integer.parseInt(newValue);
                                 if (!sudoku.setCell(finalRow, finalCol, value)) {
-                                    cell.setStyle("-fx-background-color: #ff0000;");
+                                    cell.setStyle("-fx-background-color: #ff0000; -fx-border-color: #ff0000;");
                                 } else {
                                     cell.setStyle("-fx-background-color: #90cbff;");
-                                    // Verificar si el Sudoku está resuelto
                                     if (sudoku.isSolved()) {
                                         disableSudoku();
                                     }
@@ -113,7 +86,6 @@ public class SudokuController implements Initializable {
         }
     }
 
-    // Método para mover el foco a una celda específica
     private void moveFocus(int row, int col) {
         if (row >= 0 && row < 6 && col >= 0 && col < 6) {
             for (javafx.scene.Node node : sudokuGrid.getChildren()) {
@@ -125,15 +97,16 @@ public class SudokuController implements Initializable {
         }
     }
 
-    // Metodo para desactivar el sudoku porque ya se resolvió
     public void disableSudoku() {
         for (javafx.scene.Node node : sudokuGrid.getChildren()) {
             if (node instanceof TextField textField) {
                 textField.setEditable(false);
                 textField.setStyle("-fx-background-color: #90cbff; -fx-text-fill: white;");
+                helpButton.setDisable(true);
             }
         }
         bottomLabel.setText("¡Felicidades! Has resuelto el Sudoku.");
+        bottomLabel.setTextFill(Color.LIGHTGREEN);
     }
 
     private void showHint() {
