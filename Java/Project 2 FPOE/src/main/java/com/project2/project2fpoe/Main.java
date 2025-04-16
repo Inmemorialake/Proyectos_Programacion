@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class Main extends Application {
 
-    public static void Main(String[] args) {
+    public static void main(String[] args) {
         launch(args);
     }
 
