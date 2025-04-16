@@ -20,7 +20,7 @@
     </top>
 
     <center>
-        <GridPane fx:id="grid"
+        <GridPane fx:id="sudokuGrid"
                   hgap="2"
                   vgap="2"
                   styleClass="sudoku-grid"

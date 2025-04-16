@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Sudoku {
     private final List<List<Integer>> board; // Tablero 6x6 representado como lista de listas
+    private List<List<Integer>> boardCopy; // Copia del tablero para resolver
     private static final int SIZE = 6; // Tamaño del tablero
 
     public Sudoku() {
@@ -19,34 +20,43 @@ public class Sudoku {
         }
     }
 
-    // Método para generar un tablero inicial válido con 2 valores por bloque
-    public void generateBoard() {
-        clearBoard(); // Limpiar el tablero antes de generar uno nuevo
-        List<Integer> numbers = new ArrayList<>();
-        for (int i = 1; i <= SIZE; i++) {
-            numbers.add(i);
-        }
+    public void generatePlayableBoard() {
+        do {
+            clearBoard(); // Limpia el tablero
+            fillBlocksWithTwoNumbers(); // Llena cada bloque con 2 números aleatorios
+        } while (!isResolvable()); // Repite hasta que el tablero sea resoluble
+        printBoard();
+        System.out.println("<---------->");
+        printBoardCopy();
+    }
 
-        // Llenar cada bloque 3x2 con exactamente 2 valores
+    private void fillBlocksWithTwoNumbers() {
         for (int blockRow = 0; blockRow < SIZE; blockRow += 2) {
             for (int blockCol = 0; blockCol < SIZE; blockCol += 3) {
-                int valuesToPlace = 2; // Dos valores por bloque
-                while (valuesToPlace > 0) {
+                int numbersToPlace = 2; // Dos números por bloque
+                while (numbersToPlace > 0) {
                     int row = blockRow + (int) (Math.random() * 2); // Fila dentro del bloque
                     int col = blockCol + (int) (Math.random() * 3); // Columna dentro del bloque
-                    if (board.get(row).get(col) == 0) { // Verificar que la celda esté vacía
-                        Collections.shuffle(numbers); // Mezclar los números
-                        for (int value : numbers) {
-                            if (isValidMove(row, col, value)) {
-                                board.get(row).set(col, value);
-                                valuesToPlace--;
-                                break;
-                            }
+                    if (board.get(row).get(col) == 0) { // Verifica que la celda esté vacía
+                        int value = (int) (Math.random() * SIZE) + 1; // Número aleatorio entre 1 y 6
+                        if (isValidMove(row, col, value)) { // Verifica si el número es válido
+                            board.get(row).set(col, value);
+                            numbersToPlace--;
                         }
                     }
                 }
             }
         }
+    }
+
+    // Método para verificar si el tablero es resoluble
+    private boolean isResolvable() {
+        boardCopy = new ArrayList<>();
+        for (List<Integer> row : board) {
+            List<Integer> newRow = new ArrayList<>(row);
+            boardCopy.add(newRow);
+        }
+        return solve();
     }
 
     // Método para limpiar el tablero
@@ -125,18 +135,28 @@ public class Sudoku {
         }
     }
 
+    //Metodo para imprimir la copia del tablero (depuración y trampa)
+    public void printBoardCopy() {
+        for (List<Integer> row : boardCopy) {
+            for (Integer cell : row) {
+                System.out.print(cell + " ");
+            }
+            System.out.println();
+        }
+    }
+
     // Método para resolver el Sudoku (backtracking)
     public boolean solve() {
         for (int row = 0; row < SIZE; row++) {
             for (int col = 0; col < SIZE; col++) {
-                if (board.get(row).get(col) == 0) {
+                if (boardCopy.get(row).get(col) == 0) {
                     for (int value = 1; value <= SIZE; value++) {
                         if (isValidMove(row, col, value)) {
-                            board.get(row).set(col, value);
+                            boardCopy.get(row).set(col, value);
                             if (solve()) {
                                 return true;
                             }
-                            board.get(row).set(col, 0); // Retroceder
+                            boardCopy.get(row).set(col, 0); // Retroceder
                         }
                     }
                     return false; // No hay solución

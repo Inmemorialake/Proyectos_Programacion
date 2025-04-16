@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 public class SudokuController implements Initializable {
 
     @FXML
-    private GridPane grid;
+    private GridPane sudokuGrid;
 
     @FXML
     private Button helpButton;
@@ -23,7 +23,7 @@ public class SudokuController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         sudoku = new Sudoku(); // Inicializar la lógica del Sudoku
-        sudoku.generateBoard();
+        sudoku.generatePlayableBoard(); // Generar un tablero resoluble
         createGrid();
         helpButton.setOnAction(e -> showHint());
 
@@ -78,7 +78,7 @@ public class SudokuController implements Initializable {
                     });
                 }
 
-                grid.add(cell, col, row);
+                sudokuGrid.add(cell, col, row);
             }
         }
     }
@@ -91,7 +91,7 @@ public class SudokuController implements Initializable {
                     for (int value = 1; value <= 6; value++) {
                         if (sudoku.isValidMove(row, col, value)) {
                             // Colorear la celda sugerida
-                            for (javafx.scene.Node node : grid.getChildren()) {
+                            for (javafx.scene.Node node : sudokuGrid.getChildren()) {
                                 if (GridPane.getRowIndex(node) == row && GridPane.getColumnIndex(node) == col && node instanceof TextField textField) {
                                     textField.setText(String.valueOf(value));
                                     textField.setStyle("-fx-background-color: #4da6ff; -fx-text-fill: white;");
