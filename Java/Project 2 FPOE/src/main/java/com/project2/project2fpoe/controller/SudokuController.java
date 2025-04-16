@@ -1,12 +1,15 @@
 package com.project2.project2fpoe.controller;
 
 import com.project2.project2fpoe.model.Sudoku;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -30,10 +33,19 @@ public class SudokuController implements Initializable {
         sudoku.generatePlayableBoard(); // Generar un tablero resoluble
         createGrid();
         helpButton.setOnAction(e -> showHint());
-
     }
 
     private void createGrid() {
+
+        // Crear un Timeline para verificar si el Sudoku está resuelto
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(500), event -> {
+            if (sudoku.isSolved()) {
+                disableSudoku();
+            }
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE); // Repetir indefinidamente
+        timeline.play();
+
         for (int row = 0; row < 6; row++) {
             for (int col = 0; col < 6; col++) {
                 TextField cell = new TextField();
@@ -69,9 +81,13 @@ public class SudokuController implements Initializable {
                             if (!newValue.isEmpty()) {
                                 int value = Integer.parseInt(newValue);
                                 if (!sudoku.setCell(finalRow, finalCol, value)) {
-                                    cell.setStyle("-fx-background-color: #ff0000; -fx-text-fill: #ffffff;");
+                                    cell.setStyle("-fx-background-color: #ff0000;");
                                 } else {
-                                    cell.setStyle("-fx-background-color: #90cbff; -fx-text-fill: white;");
+                                    cell.setStyle("-fx-background-color: #90cbff;");
+                                    // Verificar si el Sudoku está resuelto
+                                    if (sudoku.isSolved()) {
+                                        disableSudoku();
+                                    }
                                 }
                             } else {
                                 sudoku.getBoard().get(finalRow).set(finalCol, 0); // reset
@@ -82,11 +98,43 @@ public class SudokuController implements Initializable {
                     });
                 }
 
+                // Manejador de teclado para mover el foco
+                cell.setOnKeyPressed(event -> {
+                    switch (event.getCode()) {
+                        case UP -> moveFocus(finalRow - 1, finalCol);
+                        case DOWN -> moveFocus(finalRow + 1, finalCol);
+                        case LEFT -> moveFocus(finalRow, finalCol - 1);
+                        case RIGHT -> moveFocus(finalRow, finalCol + 1);
+                    }
+                });
+
                 sudokuGrid.add(cell, col, row);
             }
         }
     }
 
+    // Método para mover el foco a una celda específica
+    private void moveFocus(int row, int col) {
+        if (row >= 0 && row < 6 && col >= 0 && col < 6) {
+            for (javafx.scene.Node node : sudokuGrid.getChildren()) {
+                if (GridPane.getRowIndex(node) == row && GridPane.getColumnIndex(node) == col && node instanceof TextField textField) {
+                    textField.requestFocus();
+                    break;
+                }
+            }
+        }
+    }
+
+    // Metodo para desactivar el sudoku porque ya se resolvió
+    public void disableSudoku() {
+        for (javafx.scene.Node node : sudokuGrid.getChildren()) {
+            if (node instanceof TextField textField) {
+                textField.setEditable(false);
+                textField.setStyle("-fx-background-color: #90cbff; -fx-text-fill: white;");
+            }
+        }
+        bottomLabel.setText("¡Felicidades! Has resuelto el Sudoku.");
+    }
 
     private void showHint() {
         for (int row = 0; row < 6; row++) {

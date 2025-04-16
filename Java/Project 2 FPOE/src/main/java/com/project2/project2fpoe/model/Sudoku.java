@@ -28,6 +28,8 @@ public class Sudoku {
         printBoard();
         System.out.println("<---------->");
         printBoardCopy();
+        System.out.println("<---------->");
+        System.out.println(isSolved());
     }
 
     private void fillBlocksWithTwoNumbers() {
@@ -112,17 +114,48 @@ public class Sudoku {
         return true;
     }
 
-    // Método para verificar si el tablero está resuelto
     public boolean isSolved() {
+        // Verificar filas
         for (int row = 0; row < SIZE; row++) {
+            boolean[] seen = new boolean[SIZE + 1];
             for (int col = 0; col < SIZE; col++) {
                 int value = board.get(row).get(col);
-                if (value == 0 || !isValidMove(board ,row, col, value)) {
+                if (value == 0 || seen[value]) {
                     return false;
+                }
+                seen[value] = true;
+            }
+        }
+
+        // Verificar columnas
+        for (int col = 0; col < SIZE; col++) {
+            boolean[] seen = new boolean[SIZE + 1];
+            for (int row = 0; row < SIZE; row++) {
+                int value = board.get(row).get(col);
+                if (value == 0 || seen[value]) {
+                    return false;
+                }
+                seen[value] = true;
+            }
+        }
+
+        // Verificar bloques 3x2
+        for (int blockRow = 0; blockRow < SIZE; blockRow += 2) {
+            for (int blockCol = 0; blockCol < SIZE; blockCol += 3) {
+                boolean[] seen = new boolean[SIZE + 1];
+                for (int row = blockRow; row < blockRow + 2; row++) {
+                    for (int col = blockCol; col < blockCol + 3; col++) {
+                        int value = board.get(row).get(col);
+                        if (value == 0 || seen[value]) {
+                            return false;
+                        }
+                        seen[value] = true;
+                    }
                 }
             }
         }
-        return true;
+
+        return true; // Si pasa todas las verificaciones, el tablero está resuelto
     }
 
     // Método para imprimir el tablero (para depuración)
