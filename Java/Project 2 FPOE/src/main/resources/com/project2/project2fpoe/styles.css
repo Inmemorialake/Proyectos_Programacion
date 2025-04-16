@@ -71,6 +71,13 @@
     -fx-padding: 20px; /* Margen inferior */
 }
 
+.bottomLabel {
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "JetBrains Mono", monospace;
+    -fx-font-size: 16px;
+    -fx-padding: 10px;
+}
+
 /* Estilos del boton de ayuda */
 .helpButton {
     -fx-background-color: #358bfc;

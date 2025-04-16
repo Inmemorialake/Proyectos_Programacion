@@ -39,7 +39,7 @@ public class Sudoku {
                     int col = blockCol + (int) (Math.random() * 3); // Columna dentro del bloque
                     if (board.get(row).get(col) == 0) { // Verifica que la celda esté vacía
                         int value = (int) (Math.random() * SIZE) + 1; // Número aleatorio entre 1 y 6
-                        if (isValidMove(row, col, value)) { // Verifica si el número es válido
+                        if (isValidMove(board ,row, col, value)) { // Verifica si el número es válido
                             board.get(row).set(col, value);
                             numbersToPlace--;
                         }
@@ -73,7 +73,7 @@ public class Sudoku {
 
     // Método para establecer un valor en una celda
     public boolean setCell(int row, int col, int value) {
-        if (isValidMove(row, col, value)) {
+        if (isValidMove(board ,row, col, value)) {
             board.get(row).set(col, value);
             return true;
         }
@@ -81,7 +81,7 @@ public class Sudoku {
     }
 
     // Validar si un movimiento es válido
-    public boolean isValidMove(int row, int col, int value) {
+    public boolean isValidMove(List<List<Integer>> board, int row, int col, int value) {
         if (value < 1 || value > SIZE || board.get(row).get(col) != 0) {
             return false;
         }
@@ -117,7 +117,7 @@ public class Sudoku {
         for (int row = 0; row < SIZE; row++) {
             for (int col = 0; col < SIZE; col++) {
                 int value = board.get(row).get(col);
-                if (value == 0 || !isValidMove(row, col, value)) {
+                if (value == 0 || !isValidMove(board ,row, col, value)) {
                     return false;
                 }
             }
@@ -151,7 +151,7 @@ public class Sudoku {
             for (int col = 0; col < SIZE; col++) {
                 if (boardCopy.get(row).get(col) == 0) {
                     for (int value = 1; value <= SIZE; value++) {
-                        if (isValidMove(row, col, value)) {
+                        if (isValidMove(boardCopy ,row, col, value)) {
                             boardCopy.get(row).set(col, value);
                             if (solve()) {
                                 return true;

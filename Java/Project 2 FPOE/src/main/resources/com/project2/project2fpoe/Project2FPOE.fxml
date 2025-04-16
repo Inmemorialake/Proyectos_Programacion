@@ -34,12 +34,17 @@
 
     <bottom>
         <VBox alignment="CENTER" styleClass="bottomContainer">
+            <Label text="Juega hasta completar el sudoku"
+                   fx:id="bottomLabel"
+                   styleClass="bottomLabel"
+                   BorderPane.alignment="CENTER"
+            />
             <Button text="Ayuda"
-                fx:id="helpButton"
-                styleClass="helpButton"
-                BorderPane.alignment="CENTER"
-                maxWidth="120"
-                prefHeight="40"
+                    fx:id="helpButton"
+                    styleClass="helpButton"
+                    BorderPane.alignment="CENTER"
+                    maxWidth="120"
+                    prefHeight="40"
             />
         </VBox>
     </bottom>

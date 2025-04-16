@@ -4,6 +4,7 @@ import com.project2.project2fpoe.model.Sudoku;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
@@ -17,6 +18,9 @@ public class SudokuController implements Initializable {
 
     @FXML
     private Button helpButton;
+
+    @FXML
+    private Label bottomLabel;
 
     private Sudoku sudoku; // Instancia de la lógica del Sudoku
 
@@ -89,7 +93,7 @@ public class SudokuController implements Initializable {
             for (int col = 0; col < 6; col++) {
                 if (sudoku.getBoard().get(row).get(col) == 0) {
                     for (int value = 1; value <= 6; value++) {
-                        if (sudoku.isValidMove(row, col, value)) {
+                        if (sudoku.isValidMove(sudoku.getBoard() ,row, col, value)) {
                             // Colorear la celda sugerida
                             for (javafx.scene.Node node : sudokuGrid.getChildren()) {
                                 if (GridPane.getRowIndex(node) == row && GridPane.getColumnIndex(node) == col && node instanceof TextField textField) {
