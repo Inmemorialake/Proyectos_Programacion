@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"com.project2.project2fpoe","l":"Main"},{"p":"com.project2.project2fpoe.view","l":"StageSudoku"},{"p":"com.project2.project2fpoe.model","l":"Sudoku"},{"p":"com.project2.project2fpoe.controller","l":"SudokuController"}];updateSearchResults();
