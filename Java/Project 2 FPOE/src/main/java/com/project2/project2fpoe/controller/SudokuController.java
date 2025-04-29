@@ -87,7 +87,7 @@ public class SudokuController implements Initializable {
                                 } else {
                                     cell.setStyle("-fx-background-color: #90cbff;"); // Set valid style
                                     bottomLabel.setText("Juega hasta completar el sudoku"); // Reset to default message
-                                    bottomLabel.setStyle("-fx-text-fill: #358bfc"); // Set the label color to default
+                                    bottomLabel.setTextFill(Color.web("#358bfc")); // Set the label color to default
                                     if (sudoku.isSolved()) { // Check if the Sudoku is solved
                                         disableSudoku(); // Disable the Sudoku board
                                     }
