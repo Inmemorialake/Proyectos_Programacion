@@ -48,10 +48,10 @@ public class Sudoku {
         } while (!isResolvable()); // Ensure the board is resolvable
 
         // Print the generated board
-        printBoard();
+        //printBoard();
         System.out.println("<---------->"); // Print separator
         // Print the copy of the board that will be used for solving
-        printBoardCopy();
+        //printBoardCopy();
         System.out.println("<---------->"); // Print separator
     }
 
