@@ -44,4 +44,20 @@ int main() {
     for (int i = 0 ; i < tamano ; i++){
         cout << cifrado[i] << ",";
     }
+
+    cout <<"La palabra descifrada es: ";
+    for (int i = 0 ; i < tamano ; i++){
+        int posicion = -1;
+        for (int j = 0; j < 27; j++) {
+            if (cifrado[i] == primos[j]) {
+                posicion = j;
+                break;
+            }
+        }
+        cout << abecedario[posicion];
+    }
+    cout << endl;
+
+    delete[] cifrado;
+    return 0;
 }
